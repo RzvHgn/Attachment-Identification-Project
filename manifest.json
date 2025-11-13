@@ -1,0 +1,23 @@
+{
+  "manifest_version": 3,
+  "name": "Paragon ARI Email Highlighter",
+  "version": "1.1",
+  "description": "Highlights emails in Paragon ARI customer contacts and floating windows",
+  "permissions": ["tabs", "scripting", "activeTab"],
+  "host_permissions": ["*://paragon-eu.amazon.com/*", "*://paragon.amazon.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://paragon-eu.amazon.com/*", "*://paragon.amazon.com/*", "*://*.amazon.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "action": {
+    "default_title": "Paragon Email Highlighter"
+  }
+}
